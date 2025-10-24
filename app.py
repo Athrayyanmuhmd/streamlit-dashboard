@@ -418,20 +418,37 @@ def load_css():
         transform: translateY(-2px);
     }
 
-    [data-testid="stMetricValue"] {
+    /* Metric Values - BLACK */
+    [data-testid="stMetricValue"],
+    [data-testid="stMetric"] [data-testid="stMetricValue"],
+    .main [data-testid="stMetricValue"],
+    [data-testid="stMetric"] > div > div {
         font-weight: 700 !important;
-        color: var(--text-primary) !important;
+        color: #000000 !important;
         font-size: 2rem !important;
         letter-spacing: -0.02em !important;
     }
 
-    [data-testid="stMetricLabel"] {
+    /* Metric Labels - BLACK */
+    [data-testid="stMetricLabel"],
+    [data-testid="stMetric"] [data-testid="stMetricLabel"],
+    .main [data-testid="stMetricLabel"],
+    [data-testid="stMetric"] label,
+    [data-testid="stMetric"] > div > label {
         font-weight: 500 !important;
-        color: var(--text-secondary) !important;
+        color: #000000 !important;
         font-size: 0.8125rem !important;
         text-transform: uppercase !important;
         letter-spacing: 0.08em !important;
         margin-bottom: 0.5rem !important;
+    }
+
+    /* All text inside metric cards - BLACK */
+    [data-testid="stMetric"] *,
+    [data-testid="stMetric"] div,
+    [data-testid="stMetric"] span,
+    [data-testid="stMetric"] p {
+        color: #000000 !important;
     }
 
     /* Alert Boxes - Glass with Better Visibility */
@@ -646,6 +663,98 @@ def load_css():
     hr {
         border-color: rgba(255, 255, 255, 0.08) !important;
         margin: 2rem 0 !important;
+    }
+
+    /* Analytics Page - All Text Black */
+    .main .element-container h3,
+    .main .element-container h4,
+    .main .element-container h5,
+    .main .element-container h6 {
+        color: #000000 !important;
+    }
+
+    /* Dataframe text - BLACK */
+    .main .dataframe th,
+    .main .dataframe td {
+        color: #000000 !important;
+    }
+
+    /* Ensure all container text is black */
+    .main [data-testid="column"] p,
+    .main [data-testid="column"] span,
+    .main [data-testid="column"] div {
+        color: #000000 !important;
+    }
+
+    /* Force all metric text to be black with highest specificity */
+    .main [data-testid="stMetric"] *,
+    .main [data-testid="stMetric"] div,
+    .main [data-testid="stMetric"] span,
+    .main [data-testid="stMetric"] label,
+    .main [data-testid="stMetric"] p,
+    .main div[data-testid="stMetric"] > div,
+    .main div[data-testid="stMetric"] > div > div,
+    .main div[data-testid="stMetric"] label,
+    .main [data-testid="stMetric"] [data-testid="stMetricValue"] > div,
+    .main [data-testid="stMetric"] [data-testid="stMetricLabel"] > label,
+    .main [data-testid="stMetricValue"] > div,
+    .main [data-testid="stMetricLabel"] > label {
+        color: #000000 !important;
+        font-family: 'DM Sans', sans-serif !important;
+    }
+
+    /* Extra force for metric values and labels */
+    div[data-testid="stMetric"] div[data-testid="stMetricValue"],
+    div[data-testid="stMetric"] div[data-testid="stMetricLabel"],
+    div[data-testid="stMetricValue"] div,
+    div[data-testid="stMetricLabel"] label,
+    [class*="stMetric"] [class*="MetricValue"],
+    [class*="stMetric"] [class*="MetricLabel"] {
+        color: #000000 !important;
+    }
+
+    /* Info message text */
+    .main .stInfo,
+    .main .stInfo * {
+        color: #000000 !important;
+    }
+
+    /* Button text - WHITE on button, BLACK elsewhere */
+    .stButton > button * {
+        color: #ffffff !important;
+    }
+
+    /* Ensure consistency across all elements in main */
+    .main * {
+        font-family: 'DM Sans', sans-serif !important;
+    }
+
+    /* Ultimate override for metric values - BLACK */
+    [data-testid="stMetricValue"],
+    [data-testid="stMetricValue"] *,
+    [data-testid="stMetricValue"] > div,
+    [data-testid="stMetricValue"] div,
+    .main [data-testid="stMetricValue"],
+    .main [data-testid="stMetricValue"] *,
+    .main [data-testid="stMetricValue"] > div {
+        color: #000000 !important;
+    }
+
+    /* Ultimate override for metric labels - BLACK */
+    [data-testid="stMetricLabel"],
+    [data-testid="stMetricLabel"] *,
+    [data-testid="stMetricLabel"] > label,
+    [data-testid="stMetricLabel"] label,
+    .main [data-testid="stMetricLabel"],
+    .main [data-testid="stMetricLabel"] *,
+    .main [data-testid="stMetricLabel"] > label {
+        color: #000000 !important;
+    }
+
+    /* Override any Streamlit default colors */
+    .main [data-testid="stMetric"] [class*="css"],
+    .main [data-testid="stMetric"] [class*="st"] {
+        color: #000000 !important;
     }
     </style>
     """
