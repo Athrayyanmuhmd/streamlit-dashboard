@@ -1255,37 +1255,6 @@ elif st.session_state.current_page == "Analytics":
     df_history_classification = pd.DataFrame([h for h in st.session_state.prediction_history if h['task_type'] == 'Classification'])
 
     if not df_history_classification.empty:
-        col1, col2, col3, col4 = st.columns(4)
-
-        with col1:
-            st.metric(
-                "Total Klasifikasi",
-                len(df_history_classification)
-            )
-
-        with col2:
-            avg_confidence = df_history_classification['confidence'].mean()
-            st.metric(
-                "Rata-rata Confidence",
-                f"{avg_confidence:.1f}%"
-            )
-
-        with col3:
-            max_confidence = df_history_classification['confidence'].max()
-            st.metric(
-                "Confidence Maksimum",
-                f"{max_confidence:.1f}%"
-            )
-
-        with col4:
-            most_common = df_history_classification['class'].mode()[0] if not df_history_classification['class'].mode().empty else "N/A"
-            st.metric(
-                "Kelas Terbanyak",
-                most_common
-            )
-
-        st.markdown("---")
-
         col1, col2 = st.columns([1, 1])
 
         with col1:
@@ -1303,13 +1272,13 @@ elif st.session_state.current_page == "Analytics":
                 paper_bgcolor='rgba(0,0,0,0)',
                 plot_bgcolor='rgba(30, 25, 45, 0.4)'
             )
-            st.plotly_chart(fig_pie, width='stretch')
+            st.plotly_chart(fig_pie, use_container_width=True)
 
         with col2:
             st.markdown("### Trend Confidence")
             fig_line = create_history_chart(st.session_state.prediction_history)
             if fig_line:
-                st.plotly_chart(fig_line, width='stretch')
+                st.plotly_chart(fig_line, use_container_width=True)
 
         st.markdown("---")
 
