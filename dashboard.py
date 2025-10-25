@@ -33,7 +33,7 @@ except ImportError:
 
 st.set_page_config(
     page_title="ML Dashboard",
-    page_icon="🔬",
+    page_icon="assets/Logo Dashboard.png",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -949,11 +949,21 @@ def create_history_chart(history):
 
 # --- STREAMLIT SIDEBAR ---
 with st.sidebar:
-    st.markdown("""
+    # Load and encode logo
+    import base64
+    logo_path = "assets/Logo Dashboard.png"
+    if os.path.exists(logo_path):
+        with open(logo_path, "rb") as f:
+            logo_data = base64.b64encode(f.read()).decode()
+        logo_html = f'<img src="data:image/png;base64,{logo_data}" style="width: 70px; height: 70px; z-index: 1;">'
+    else:
+        logo_html = '<span style="font-size: 2rem; font-weight: 700; color: white; z-index: 1;">🔬</span>'
+
+    st.markdown(f"""
         <div style='text-align: center; padding: 2rem 0; margin-bottom: 2rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3);'>
-            <div style='width: 70px; height: 70px; margin: 0 auto 1.5rem auto; background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 32px rgba(168, 85, 247, 0.5); position: relative; overflow: hidden;'>
+            <div style='width: 70px; height: 70px; margin: 0 auto 1.5rem auto; background: #ffffff; border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 32px rgba(168, 85, 247, 0.5); position: relative; overflow: hidden;'>
                 <div style='position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%); animation: pulse 3s ease-in-out infinite;'></div>
-                <span style='font-size: 2rem; font-weight: 700; color: white; z-index: 1;'>🔬</span>
+                {logo_html}
             </div>
             <h2 style='font-size: 1.5rem; font-weight: 700; color: #a855f7; margin: 0; letter-spacing: -0.02em;'>ML Dashboard</h2>
             <div style='width: 40px; height: 2px; background: linear-gradient(90deg, #a855f7 0%, #c084fc 100%); margin: 1rem auto 0 auto; border-radius: 1px;'></div>
@@ -1002,10 +1012,20 @@ with st.sidebar:
 
 # 1. Dashboard (Awal)
 if st.session_state.current_page == "Dashboard":
-    st.markdown("""
+    # Load and encode logo
+    import base64
+    logo_path = "assets/Logo Dashboard.png"
+    if os.path.exists(logo_path):
+        with open(logo_path, "rb") as f:
+            logo_data = base64.b64encode(f.read()).decode()
+        logo_html = f'<img src="data:image/png;base64,{logo_data}" style="width: 80px; height: 80px; z-index: 1;">'
+    else:
+        logo_html = '<span style="font-size: 2rem;">🔬</span>'
+
+    st.markdown(f"""
         <div style="text-align: center; padding: 3rem 2rem 2rem 2rem;">
-            <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(168, 85, 247, 0.5);">
-                <span style="font-size: 2rem;">🔬</span>
+            <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: #ffffff; border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(168, 85, 247, 0.5);">
+                {logo_html}
             </div>
             <h1 style="font-size: 2.5rem; font-weight: 700; color: #000000; margin: 0; letter-spacing: -0.03em;">
                 Dashboard: Classification and Detection by S
